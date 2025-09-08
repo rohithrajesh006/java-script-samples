@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register form</title>
+</head>
+<body>
+    <form name="reg_form" onsubmit="return validate()">
+        <label for="">Age</label>
+        <input type="number" name="age">
+        <label for="">Email</label>
+        <input type="email" name="email">
+        <input type="submit">
+
+
+    </form>
+
+    <script>
+        function validate(){
+            let age=document.forms["reg_form"]["age"].value;
+            if(!(age>=18)){
+                alert("Not eligible");
+                return false;
+            }
+            let email=document.forms["reg_form"]["email"].value;
+            email_pattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(!email.match(email_pattern)){
+                alert("not valid")
+                return false;
+            }
+        }
+    </script>
+    
+</body>
+</html>

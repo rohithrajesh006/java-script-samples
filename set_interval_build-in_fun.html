@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a=10;
+        let b=0;
+        let interval=setInterval(()=>{
+            console.log(a);
+            console.log(b);
+            a--;
+            b++;
+            if (a==0){
+                clearInterval(interval);
+                console.log("Times up");
+            }
+            if (b==5){
+                clearInterval(interval);
+                console.log("hiii");
+            }
+        },1000
+    )
+    </script>
+</body>
+</html>

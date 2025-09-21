@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Register form</title>
+    <title>Register form</title>                                                                                                                                                                                        
 </head>
 <body>
     <form name="reg_form" onsubmit="return validate()">
+        <label for="">Full name</label>
+        <input type="text" name="full name">
+        <br><br>
+        <label for="">password</label>
+        <input type="password" name="password" oninput="password_validation()" required>
+        <br>
+        <span id="password_msg" style="color: red;"></span>
+        <br>
         <label for="">Age</label>
         <input type="number" name="age">
-        <label for="">Email</label>
+        <br><br>
+        <label >Email</label>
         <input type="email" name="email">
+        <br>
         <input type="submit">
 
 
@@ -18,15 +28,32 @@
         function validate(){
             let age=document.forms["reg_form"]["age"].value;
             if(!(age>=18)){
-                alert("Not eligible");
+                alert("Under 18!!");
                 return false;
             }
             let email=document.forms["reg_form"]["email"].value;
             email_pattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             if(!email.match(email_pattern)){
-                alert("not valid")
+                alert("not valid email!!")
                 return false;
+            }
+        }
+        function password_validation(){
+            let password=document.forms["reg_form"]["password"].value;
+            let password_pattern=/^(?=.*[a-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+            let password_error=document.getElementById("password_msg");
+            if(!password_pattern.test(password)){
+                password_error.innerHTML=`<ul style="font-size:small;">
+                    <li>password should contain atleast one lower case</li>
+                    <li>atleast one digit</li>
+                    <li>minimum lenth should be 6</li>
+                    </ul>`
+                return false;
+            }
+            else{
+                password_error.innerHTML="";
+                return true;
             }
         }
     </script>
